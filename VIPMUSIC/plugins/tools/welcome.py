@@ -186,7 +186,7 @@ async def greet_new_member(_, member: ChatMemberUpdated):
 ● ᴜsᴇʀɴᴀᴍᴇ ➥  @{user.username}
 ● ᴜsᴇʀ ɪᴅ ➥  {user.id}
 
-❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛[🔥︻┻┳═सरकार🔥](https://t.me/ll_SARKAR_MERA_BABU_ll)
+❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛[• 𝛚𝛐𝛚 • 🥂 / ‹𝟹](https://t.me/ll_SARKAR_MERA_BABU_ll)
 ▰▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▰
 """,
                 reply_markup=InlineKeyboardMarkup([
