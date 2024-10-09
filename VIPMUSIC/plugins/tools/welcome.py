@@ -97,13 +97,13 @@ def circle(pfp, size=(500, 500), brightness_factor=10):
     return pfp
 
 def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
-    background = Image.open("VIPMUSIC/assets/wel2.png")
+    background = Image.open("assets/wel2.png")
     pfp = Image.open(pic).convert("RGBA")
     pfp = circle(pfp, brightness_factor=brightness_factor) 
     pfp = pfp.resize((825, 824))
     draw = ImageDraw.Draw(background)
-    font = ImageFont.truetype('VIPMUSIC/assets/font.ttf', size=110)
-    welcome_font = ImageFont.truetype('VIPMUSIC/assets/font.ttf', size=60)
+    font = ImageFont.truetype('assets/font.ttf', size=110)
+    welcome_font = ImageFont.truetype('assets/font.ttf', size=60)
     draw.text((2100, 1420), f'ID: {id}', fill=(12000, 12000, 12000), font=font)
     pfp_position = (1990, 435)
     background.paste(pfp, pfp_position, pfp)
@@ -171,23 +171,33 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             welcomeimg = welcomepic(
                 pic, user.first_name, member.chat.title, user.id, user.username
             )
-            button_text = "๏ ᴠɪᴇᴡ ɴᴇᴡ ᴍᴇᴍʙᴇʀ ๏"
-            add_button_text = "๏ Aᴅᴅ Mᴇ ๏"
-            deep_link = f"tg://openmessage?user_id={user.id}"
-            add_link = f"https://t.me/{app.username}?startgroup=true"
+            button_text = "❍ 𓆩 𝗦𝐓𝐘𝐋𝐈𝐒𝐇 ⌯ 𝗡𝐀𝐌𝐄 𓆪 ❍"
+            add_button_text = "❍ 𝐏𝐑𝐎𝐌𝐎𝐓𝐈𝐎𝐍 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 ❍"
+            deep_link = f"https://t.me/TG_NAME_STYLE"
+            add_link = f"https://t.me/TG_NAME_STYLE/4602"
             temp.MELCOW[f"welcome-{member.chat.id}"] = await app.send_photo(
                 member.chat.id,
                 photo=welcomeimg,
                 caption=f"""
-ㅤㅤㅤ◦•●◉✿ ᴡᴇʟᴄᴏᴍᴇ ʙᴀʙʏ ✿◉●•◦
-▰▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▰
+╔═.✵.════════════════╗
+❍ 𝐍ᴀᴍᴇ ➥  {user.mention}
+❍ 𝐔sᴇʀɴᴀᴍᴇ ➥  @{user.username}
+❍ 𝐔sᴇʀ 𝐈ᴅ ➥  {user.id}
 
-● ɴᴀᴍᴇ ➥  {user.mention}
-● ᴜsᴇʀɴᴀᴍᴇ ➥  @{user.username}
-● ᴜsᴇʀ ɪᴅ ➥  {user.id}
-
-❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛[• 𝛚𝛐𝛚 • 🥂 / ‹𝟹](https://t.me/ll_SARKAR_MERA_BABU_ll)
-▰▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▰
+➥🌹╔══╗
+➥🌹╚╗╔╝
+➥🌹╔╝╚╗
+➥🌹╚══╝
+➥🌹╔╗ 
+➥🌹║║╔═╦╦╦╔╗
+➥🌹║╚╣║║║║╔╣
+➥🌹╚═╩═╩═╩═╝
+➥🌹╔╗╔╗
+➥🌹║║║║
+➥🌹║╚╝║
+➥🌹╚══╝
+❖ 𝐏ᴏᴡᴇʀᴇᴅ 𝐁ʏ ➥ ๛[❤️‍🔥 • 𝛚𝛐𝛚 • ❤️‍🔥](https://t.me/ll_SARKAR_MERA_BABU_ll)
+╚════════════════.✵.═╝
 """,
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton(button_text, url=deep_link)],
