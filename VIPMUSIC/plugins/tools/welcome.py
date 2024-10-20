@@ -104,7 +104,7 @@ def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
     draw = ImageDraw.Draw(background)
     font = ImageFont.truetype('assets/font.ttf', size=110)
     welcome_font = ImageFont.truetype('assets/font.ttf', size=60)
-    pfp_position = (135, 435)
+    pfp_position = (135, 635)
     background.paste(pfp, pfp_position, pfp)
     background.save(f"downloads/welcome#{id}.png")
     return f"downloads/welcome#{id}.png"
