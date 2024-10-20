@@ -55,10 +55,10 @@ random_photo = [
 
 
 
-LOGGER = getLogger(name)
+LOGGER = getLogger(__name__)
 
 class WelDatabase:
-    def init(self):
+    def __init__(self):
         self.data = {}
 
     async def find_one(self, chat_id):
@@ -84,7 +84,7 @@ class temp:
 
 
 
-def circle(pfp, size=(500, 500), brightness_factor=10):
+def circle(pfp, size=(900, 900), brightness_factor=10):
     pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
     pfp = ImageEnhance.Brightness(pfp).enhance(brightness_factor)
     bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
@@ -113,13 +113,12 @@ def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
 
 @app.on_message(filters.command("welcome") & ~filters.private)
 async def auto_state(_, message):
-    usage = "ᴜsᴀɢᴇ:\n⦿ /welcome [on|off]"
+    usage = "**ᴜsᴀɢᴇ:**\n**⦿ /welcome [on|off]**"
     if len(message.command) == 1:
         return await message.reply_text(usage)
     chat_id = message.chat.id
     user = await app.get_chat_member(message.chat.id, message.from_user.id)
-
-if user.status in (
+    if user.status in (
         enums.ChatMemberStatus.ADMINISTRATOR,
         enums.ChatMemberStatus.OWNER,
     ):
@@ -127,20 +126,20 @@ if user.status in (
         state = message.text.split(None, 1)[1].strip().lower()
         if state == "off":
             if A:
-                await message.reply_text("ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ᴀʟʀᴇᴀᴅʏ ᴅɪsᴀʙʟᴇᴅ !")
+                await message.reply_text("**ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ᴀʟʀᴇᴀᴅʏ ᴅɪsᴀʙʟᴇᴅ !**")
             else:
                 await wlcm.add_wlcm(chat_id)
-                await message.reply_text(f"ᴅɪsᴀʙʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ {message.chat.title}")
+                await message.reply_text(f"**ᴅɪsᴀʙʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ** {message.chat.title}")
         elif state == "on":
             if not A:
-                await message.reply_text("ᴇɴᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ.")
-        else:
+                await message.reply_text("**ᴇɴᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ.**")
+            else:
                 await wlcm.rm_wlcm(chat_id)
-                await message.reply_text(f"ᴇɴᴀʙʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ  {message.chat.title}")
+                await message.reply_text(f"**ᴇɴᴀʙʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ ** {message.chat.title}")
         else:
             await message.reply_text(usage)
-        else:
-        await message.reply("sᴏʀʀʏ ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴇɴᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ!")
+    else:
+        await message.reply("**sᴏʀʀʏ ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴇɴᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ!**")
 
 
 
@@ -173,7 +172,7 @@ async def greet_new_member(_, member: ChatMemberUpdated):
                 pic, user.first_name, member.chat.title, user.id, user.username
             )
             button_text = "❍ 𝐎ᴡɴᴇʀ ❍"
-            add_button_text = "❍ sᴜᴩᴩᴏʀᴛ ❍"
+            add_button_text = ""❍ sᴜᴩᴩᴏʀᴛ ❍"
             deep_link = f"https://t.me/Azad_parinda_0"
             add_link = f"https://t.me/allsubjectpdf0"
             temp.MELCOW[f"welcome-{member.chat.id}"] = await app.send_photo(
@@ -195,3 +194,6 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             )
         except Exception as e:
             LOGGER.error(e)
+
+
+      
